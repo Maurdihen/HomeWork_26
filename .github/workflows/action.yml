@@ -4,8 +4,6 @@ jobs:
   build_and_push:
     runs-on: ubuntu-latest
     steps:
-      - name: list dir
-        uses: ls -la
       - name: clone code
         uses: actions/checkout@v2
       - name: docker build
