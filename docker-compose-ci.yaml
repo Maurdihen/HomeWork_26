@@ -12,7 +12,8 @@ services:
       pg:
         condition: service_healthy
   pg:
-    image: postgres:latest
+    image:
+      postgres:latest
     environment:
       POSTGRES_USER: $DB_USER
       POSTGRES_PASSWORD: $DB_PASSWORD
