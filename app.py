@@ -16,6 +16,7 @@ class User(db.Model):
     username = db.Column(db.String(128), unique=True)
     password = db.Column(db.String(128))
 
+#jfs
 
 with app.app_context():
     db.create_all()
