@@ -26,14 +26,14 @@ jobs:
         run: |
           mkdir deploy
           cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
-          cat docker_config_ci.py | envsubst > deploy/config.py
+          cat docker_config_ci.py | envsubst > deploy/docker_config.py
       - name: copy files to server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          source: "deploy/docker-compose.yaml,deploy/config.py"
+          source: "deploy/docker-compose.yaml,deploy/docker_config.py"
           target: "flask_app_ci"
           strip_components: 1
       - name: deploy app
