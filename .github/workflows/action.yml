@@ -7,11 +7,11 @@ jobs:
       - name: clone code
         uses: actions/checkout@v2
       - name: docker build
-        run: docker build -t mat1ro/skypro_rboronov_app:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
+        run: docker build -t ramecnt/skypro_ramecnt_app:$GITHUB_REF_NAME-$GITHUB_RUN_ID .
       - name: docker login
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: docker push
-        run: docker push mat1ro/skypro_rboronov_app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+        run: docker push ramecnt/skypro_ramecnt_app:$GITHUB_REF_NAME-$GITHUB_RUN_ID
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push
@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir deploy
           cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
-          cat docker_ci_config.py | envsubst > deploy/config.py
+          cat docker_config_ci.py | envsubst > deploy/config.py
       - name: copy files to server
         uses: appleboy/scp-action@v0.1.4
         with:
