@@ -12,6 +12,7 @@ services:
     depends_on:
       pg:
         condition: service_healthy
+    platform: linux/amd64
   pg:
     image: postgres:latest
     environment:
