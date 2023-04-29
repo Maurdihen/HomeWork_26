@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: .
-    image: maurdihen/hw26
+    image: maurdihen/hw_26
     ports:
       - 80:80
     volumes:
@@ -12,7 +12,6 @@ services:
     depends_on:
       pg:
         condition: service_healthy
-    platform: linux/amd64
   pg:
     image: postgres:latest
     environment:
