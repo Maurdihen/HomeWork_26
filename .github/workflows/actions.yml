@@ -7,7 +7,7 @@ jobs:
       - name: list-dir
         run: ls -la
       - name: clone code
-        run: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: list dir 2
         run: ls -la
 
